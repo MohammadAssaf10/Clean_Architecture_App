@@ -1,0 +1,17 @@
+{
+  "status": 200,
+  "message": "Successfully",
+  "lastPage": 2,
+  "data": [
+    {
+      "id": 1,
+      "title": "Full home pagination Example",
+      "description": "Full home pagination Description"
+    },
+    {
+      "id": 2,
+      "title": "Full home pagination Example",
+      "description": "Full home pagination Description"
+    }
+  ]
+}

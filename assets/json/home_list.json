@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "message": "Successfully",
+  "data": [
+    {
+      "id": 1,
+      "title": "Full home list Example 1",
+      "description": "Full home list Description 1"
+    },
+    {
+      "id": 2,
+      "title": "Full home list Example 2",
+      "description": "Full home list Description 2"
+    },
+    {
+      "id": 3,
+      "title": "Full home list Example 3",
+      "description": "Full home list Description 3"
+    }
+  ]
+}

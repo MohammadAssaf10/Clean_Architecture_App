@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "message": "Successfully",
+  "data": {
+    "id": 1,
+    "title": "Full home Example",
+    "description": "Full home Description"
+  }
+}
