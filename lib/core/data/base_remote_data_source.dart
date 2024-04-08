@@ -1,26 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:injectable/injectable.dart';
 
 import '../models/base_model.dart';
 
 abstract class BaseRemoteDataSource {
-  @protected
-  Future<Map<String, dynamic>> performGetRequest({
-    required String endpoint,
-    required String language,
-    String? token,
-    Map<String, dynamic>? queryParameters,
-  });
-}
-
-@LazySingleton(as: BaseRemoteDataSource)
-class BaseRemoteDataSourceImpl extends BaseRemoteDataSource {
   final Dio dio;
 
-  BaseRemoteDataSourceImpl({required this.dio});
+  BaseRemoteDataSource({required this.dio});
 
-  @override
   Future<Map<String, dynamic>> performGetRequest({
     required String endpoint,
     required String language,

@@ -1,11 +1,11 @@
-import 'package:clean_architecture_app/home/domain/entities/about_entity.dart';
-import 'package:clean_architecture_app/home/domain/entities/home_entity.dart';
-import 'package:clean_architecture_app/home/domain/entities/home_list_entity.dart';
-import 'package:clean_architecture_app/home/domain/entities/home_pagination_entity.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../domain/entities/about_entity.dart';
+import '../../domain/entities/home_entity.dart';
+import '../../domain/entities/home_list_entity.dart';
+import '../../domain/entities/home_pagination_entity.dart';
 import '../../domain/repositories/home_repository.dart';
-import '../data_source/remote/home_remote_data_source.dart';
+import '../data_source/home_remote_data_source.dart';
 
 @LazySingleton(as: HomeRepository)
 class HomeRepositoryImpl extends HomeRepository {
