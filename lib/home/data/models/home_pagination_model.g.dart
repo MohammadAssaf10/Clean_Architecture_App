@@ -10,10 +10,8 @@ HomePaginationModel _$HomePaginationModelFromJson(Map<String, dynamic> json) =>
     HomePaginationModel(
       status: json['status'] as int?,
       message: json['message'] as String?,
-      lastPage: json['lastPage'] as int,
-      homeList: (json['data'] as List<dynamic>)
-          .map((e) => SubHomeModel.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      subHomePaginationModel:
+          SubHomePaginationModel.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$HomePaginationModelToJson(
@@ -21,6 +19,5 @@ Map<String, dynamic> _$HomePaginationModelToJson(
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
-      'lastPage': instance.lastPage,
-      'data': instance.homeList,
+      'data': instance.subHomePaginationModel,
     };

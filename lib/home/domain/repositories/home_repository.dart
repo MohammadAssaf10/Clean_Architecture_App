@@ -1,12 +1,15 @@
-import '../entities/about_entity.dart';
-import '../entities/home_entity.dart';
-import '../entities/home_list_entity.dart';
-import '../entities/home_pagination_entity.dart';
+import 'package:dartz/dartz.dart';
+import '../entities/about.dart';
+import '../entities/home.dart';
+import '../entities/home_list.dart';
+import '../entities/home_pagination.dart';
 
-abstract class HomeRepository{
+abstract class HomeRepository {
   Future<HomeEntity> getHome();
+
   Future<HomeListEntity> getHomeList();
 
-  Future<HomePaginationEntity> getHomePaginationList();
+  Future<Either<Exception, HomePaginationEntity>> getHomePaginationList();
+
   Future<AboutEntity> getAbout();
 }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/di/injection.dart';
-import '../../domain/entities/about_entity.dart';
-import '../../domain/entities/home_entity.dart';
-import '../../domain/entities/home_list_entity.dart';
-import '../../domain/entities/home_pagination_entity.dart';
-import '../../domain/entities/sub_home_entity.dart';
+import '../../domain/entities/home.dart';
+import '../../domain/entities/home_list.dart';
+import '../../domain/entities/sub_home.dart';
 import '../../domain/repositories/home_repository.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -92,25 +90,30 @@ class _MyHomePageState extends State<MyHomePage> {
           debugPrint('Home List Entity: ${homeListEntity.homeEntityList}');
           debugPrint(
               '----------------------------------------------------------------------');
-          final HomePaginationEntity homePaginationEntity =
-              await _homeRepository.getHomePaginationList();
-          debugPrint('Status: ${homePaginationEntity.status}');
-          debugPrint('Message: ${homePaginationEntity.message}');
-          debugPrint('Last page: ${homePaginationEntity.lastPage}');
-          debugPrint(
-              'Home Pagination List Entity: ${homePaginationEntity.homeEntityList}');
+          final result = await _homeRepository.getHomePaginationList();
+          result.fold((exception) {
+            debugPrint('Exception: $exception');
+          }, (data) {
+            debugPrint('Status: ${data.status}');
+            debugPrint('Message: ${data.message}');
+            debugPrint(
+                'Total Elements: ${data.subHomePagination.totalElements}');
+            debugPrint('Total Pages: ${data.subHomePagination.totalPages}');
+            debugPrint(
+                'Home Entity list items: ${data.subHomePagination.homeItems}');
+          });
           debugPrint(
               '----------------------------------------------------------------------');
           setState(() {
             homeEntityList = homeListEntity.homeEntityList;
           });
-          final AboutEntity aboutEntity = await _homeRepository.getAbout();
-          debugPrint('Status: ${aboutEntity.status}');
-          debugPrint('Message: ${aboutEntity.message}');
-          debugPrint('ID: ${aboutEntity.subAboutEntity.id}');
-          debugPrint('Text: ${aboutEntity.subAboutEntity.text}');
-          debugPrint(
-              '----------------------------------------------------------------------');
+          // final AboutEntity aboutEntity = await _homeRepository.getAbout();
+          // debugPrint('Status: ${aboutEntity.status}');
+          // debugPrint('Message: ${aboutEntity.message}');
+          // debugPrint('ID: ${aboutEntity.subAboutEntity.id}');
+          // debugPrint('Text: ${aboutEntity.subAboutEntity.text}');
+          // debugPrint(
+          //     '----------------------------------------------------------------------');
         },
         child: const Text("Get Data"),
       ),

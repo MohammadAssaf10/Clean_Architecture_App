@@ -1,24 +1,25 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/home_pagination_entity.dart';
-import 'sub_home_model.dart';
+import '../../domain/entities/home_pagination.dart';
+import 'sub_home_pagination_model.dart';
 
 part 'home_pagination_model.g.dart';
 
 @JsonSerializable()
 class HomePaginationModel extends HomePaginationEntity {
   @JsonKey(name: 'data')
-  final List<SubHomeModel> homeList;
+  final SubHomePaginationModel subHomePaginationModel;
 
-  const HomePaginationModel(
-      {required super.status,
-      required super.message,
-      required super.lastPage,
-      required this.homeList})
-      : super(
-          homeEntityList: homeList,
+  const HomePaginationModel({
+    required super.status,
+    required super.message,
+    required this.subHomePaginationModel,
+  }) : super(
+          subHomePagination: subHomePaginationModel,
         );
 
   factory HomePaginationModel.fromJson(Map<String, dynamic> json) =>
       _$HomePaginationModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$HomePaginationModelToJson(this);
 }

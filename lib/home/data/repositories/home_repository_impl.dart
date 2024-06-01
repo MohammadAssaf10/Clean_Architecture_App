@@ -1,9 +1,10 @@
+import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../domain/entities/about_entity.dart';
-import '../../domain/entities/home_entity.dart';
-import '../../domain/entities/home_list_entity.dart';
-import '../../domain/entities/home_pagination_entity.dart';
+import '../../domain/entities/about.dart';
+import '../../domain/entities/home.dart';
+import '../../domain/entities/home_list.dart';
+import '../../domain/entities/home_pagination.dart';
 import '../../domain/repositories/home_repository.dart';
 import '../data_source/home_remote_data_source.dart';
 
@@ -21,8 +22,15 @@ class HomeRepositoryImpl extends HomeRepository {
       await homeRemoteDataSource.getHomeList();
 
   @override
-  Future<HomePaginationEntity> getHomePaginationList() async =>
-      await homeRemoteDataSource.getHomePaginationList();
+  Future<Either<Exception, HomePaginationEntity>>
+      getHomePaginationList() async {
+    try {
+      final result = await homeRemoteDataSource.getHomePaginationList();
+      return Right(result);
+    } catch (e) {
+      return Left(Exception(e));
+    }
+  }
 
   @override
   Future<AboutEntity> getAbout() async {

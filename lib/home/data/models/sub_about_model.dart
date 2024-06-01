@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/sub_about_entity.dart';
+import '../../domain/entities/sub_about.dart';
 
 part 'sub_about_model.g.dart';
 
@@ -10,7 +10,9 @@ class SubAboutModel extends SubAboutEntity {
     required super.id,
     required super.text,
   });
+
   factory SubAboutModel.fromJson(Map<String, dynamic> json) =>
       _$SubAboutModelFromJson(json);
 
+  Map<String, dynamic> toJson() => _$SubAboutModelToJson(this);
 }

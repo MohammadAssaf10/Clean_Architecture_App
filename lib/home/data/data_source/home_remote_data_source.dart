@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../core/data/base_remote_data_source.dart';
+import '../../../core/models/base_model.dart';
 import '../../../core/utils/constants.dart';
 import '../models/about_model.dart';
 import '../models/home_list_model.dart';
@@ -34,9 +35,14 @@ class HomeRemoteDataSource extends BaseRemoteDataSource {
     final String jsonString =
         await rootBundle.loadString('assets/json/home_pagination.json');
     final Map<String, dynamic> homePaginationModelJson = jsonDecode(jsonString);
-    final HomePaginationModel homePaginationModel =
-        HomePaginationModel.fromJson(homePaginationModelJson);
-    return homePaginationModel;
+    final BaseModel baseModel = BaseModel.fromJson(homePaginationModelJson);
+    if (baseModel.status == 200) {
+      final HomePaginationModel homePaginationModel =
+          HomePaginationModel.fromJson(homePaginationModelJson);
+      return homePaginationModel;
+    } else {
+      throw Exception('Something wrong');
+    }
   }
 
   Future<AboutModel> getAbout() async {

@@ -1,5 +1,5 @@
 import '../../../core/entities/base_entity.dart';
-import 'sub_about_entity.dart';
+import 'sub_about.dart';
 
 class AboutEntity extends BaseEntity {
   final SubAboutEntity subAboutEntity;

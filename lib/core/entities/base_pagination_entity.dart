@@ -1,11 +1,9 @@
-import 'base_entity.dart';
-
-abstract class BasePaginationEntity extends BaseEntity {
-  final int lastPage;
+abstract class BasePaginationEntity {
+  final int totalElements;
+  final int totalPages;
 
   const BasePaginationEntity({
-    required super.status,
-    required super.message,
-    required this.lastPage,
+    required this.totalElements,
+    required this.totalPages,
   });
 }
