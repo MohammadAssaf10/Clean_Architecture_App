@@ -11,7 +11,7 @@ SubHomePaginationModel _$SubHomePaginationModelFromJson(
     SubHomePaginationModel(
       totalElements: json['totalElements'] as int,
       totalPages: json['totalPages'] as int,
-      homeModelItems: (json['data'] as List<dynamic>)
+      subHomeModelList: (json['data'] as List<dynamic>)
           .map((e) => SubHomeModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -21,5 +21,5 @@ Map<String, dynamic> _$SubHomePaginationModelToJson(
     <String, dynamic>{
       'totalElements': instance.totalElements,
       'totalPages': instance.totalPages,
-      'data': instance.homeModelItems,
+      'data': instance.subHomeModelList,
     };

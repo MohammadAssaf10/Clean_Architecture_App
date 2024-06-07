@@ -1,12 +1,12 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/home.dart';
+import '../../../core/models/base_model.dart';
 import 'sub_home_model.dart';
 
 part 'home_model.g.dart';
 
 @JsonSerializable()
-class HomeModel extends HomeEntity {
+class HomeModel extends BaseModel {
   @JsonKey(name: 'data')
   final SubHomeModel homeModel;
 
@@ -14,7 +14,7 @@ class HomeModel extends HomeEntity {
     required super.status,
     required super.message,
     required this.homeModel,
-  }) : super(homeEntity: homeModel);
+  });
 
   factory HomeModel.fromJson(Map<String, dynamic> json) =>
       _$HomeModelFromJson(json);
