@@ -1,16 +1,14 @@
-import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import '../entities/base_entity.dart';
 
 part 'base_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class BaseModel extends Equatable {
-  final int? status;
-  final String? message;
-
+class BaseModel extends BaseEntity {
   const BaseModel({
-    required this.status,
-    required this.message,
+    required super.status,
+    required super.message,
   });
 
   factory BaseModel.fromJson(Map<String, dynamic> json) =>

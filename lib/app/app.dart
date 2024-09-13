@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'Clean Architecture App',
       onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: Routes.homeScreen,
+      initialRoute: Routes.homePage,
     );
   }
 }
