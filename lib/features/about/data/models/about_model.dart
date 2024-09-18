@@ -1,25 +1,26 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../domain/entities/about.dart';
-import 'sub_about_model.dart';
 
 part 'about_model.g.dart';
 
-@JsonSerializable()
-class AboutModel extends About {
-  @JsonKey(name: 'data')
-  final SubAboutModel subAboutModel;
+@JsonSerializable(createToJson: false)
+class AboutModel {
+  final int id;
+  final String text;
 
-  const AboutModel(
-      {required super.status,
-      required super.message,
-      required this.subAboutModel})
-      : super(
-          subAbout: subAboutModel,
-        );
+  const AboutModel({
+    required this.id,
+    required this.text,
+  });
 
   factory AboutModel.fromJson(Map<String, dynamic> json) =>
       _$AboutModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AboutModelToJson(this);
+  About toDomain() {
+    return About(
+      id: id,
+      text: text,
+    );
+  }
 }

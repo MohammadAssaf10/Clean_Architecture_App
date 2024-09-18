@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/routing/routes.dart';
-import '../../domain/entities/home_item.dart';
+import '../../domain/entities/home_entity.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 
@@ -29,9 +29,9 @@ class Homepage extends StatelessWidget {
               children: [
                 Flexible(
                   child: ListView.builder(
-                    itemCount: state.homeItems.length,
+                    itemCount: state.homeDataItems.length,
                     itemBuilder: (context, index) {
-                      final HomeItem homeItem = state.homeItems[index];
+                      final HomeEntity homeDataItem = state.homeDataItems[index];
                       return Container(
                         margin: const EdgeInsets.symmetric(
                             vertical: 10, horizontal: 15),
@@ -44,21 +44,21 @@ class Homepage extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "ID: ${homeItem.id}",
+                              "ID: ${homeDataItem.id}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              "Title: ${homeItem.title}",
+                              "Title: ${homeDataItem.title}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,
                               ),
                             ),
                             Text(
-                              "Description: ${homeItem.description}",
+                              "Description: ${homeDataItem.description}",
                               style: const TextStyle(
                                 fontSize: 16,
                                 color: Colors.white,

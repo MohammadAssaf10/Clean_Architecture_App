@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../entities/home_pagination/home_pagination.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/home_pagination_entity.dart';
 import '../repositories/home_repository.dart';
 
 @lazySingleton
@@ -12,6 +13,6 @@ class GetHomePaginationListUseCase {
     required this.homeRepository,
   });
 
-  Future<Either<Exception, HomePagination>> call() async =>
+  Future<Either<Failure, HomePaginationEntity>> call() async =>
       await homeRepository.getHomePaginationList();
 }

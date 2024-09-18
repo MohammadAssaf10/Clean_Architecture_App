@@ -1,25 +1,32 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../domain/entities/home_pagination/home_pagination.dart';
-import 'sub_home_pagination_model.dart';
+import '../../../../../core/models/base_pagination_model.dart';
+import '../../../domain/entities/home_pagination_entity.dart';
+import 'home_pagination_item_model.dart';
 
 part 'home_pagination_model.g.dart';
 
-@JsonSerializable()
-class HomePaginationModel extends HomePagination {
+@JsonSerializable(createToJson: false)
+class HomePaginationModel extends BasePaginationModel {
   @JsonKey(name: 'data')
-  final SubHomePaginationModel subHomePaginationModel;
+  final List<HomePaginationItemModel> homePaginationItemsModel;
 
   const HomePaginationModel({
-    required super.status,
-    required super.message,
-    required this.subHomePaginationModel,
-  }) : super(
-          subHomePagination: subHomePaginationModel,
-        );
+    required super.totalElements,
+    required super.totalPages,
+    required super.size,
+    required super.numberOfElements,
+    required this.homePaginationItemsModel,
+  });
 
   factory HomePaginationModel.fromJson(Map<String, dynamic> json) =>
       _$HomePaginationModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$HomePaginationModelToJson(this);
+  HomePaginationEntity toDomain() {
+    return HomePaginationEntity(
+      homePaginationItems:
+          homePaginationItemsModel.map((item) => item.toDomain()).toList(),
+      totalPages: totalPages,
+    );
+  }
 }

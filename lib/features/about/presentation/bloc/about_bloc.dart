@@ -35,7 +35,7 @@ class AboutBloc extends Bloc<AboutEvent, AboutState> {
                 (b) => b
                   ..isLoading = false
                   ..isError = true
-                  ..message = failure.toString()
+                  ..message = failure.error
                   ..isSuccess = false,
               ),
             );
@@ -48,7 +48,7 @@ class AboutBloc extends Bloc<AboutEvent, AboutState> {
                   ..isError = false
                   ..message = ''
                   ..isSuccess = true
-                  ..about = data.subAbout,
+                  ..about = data,
               ),
             );
           },

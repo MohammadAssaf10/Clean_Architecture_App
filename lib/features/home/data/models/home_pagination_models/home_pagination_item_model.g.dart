@@ -13,11 +13,3 @@ HomePaginationItemModel _$HomePaginationItemModelFromJson(
       title: json['title'] as String,
       description: json['description'] as String,
     );
-
-Map<String, dynamic> _$HomePaginationItemModelToJson(
-        HomePaginationItemModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-    };

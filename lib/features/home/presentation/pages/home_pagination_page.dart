@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/entities/home_pagination/home_pagination_item.dart';
+import '../../domain/entities/home_pagination_item_entity.dart';
 import '../bloc/home_bloc.dart';
 import '../bloc/home_state.dart';
 
@@ -72,7 +72,7 @@ class _HomePaginationPageState extends State<HomePaginationPage> {
                     ),
                   );
                 }
-                final HomePaginationItem homePaginationItem =
+                final HomePaginationItemEntity homePaginationItemEntity =
                     state.homePagination.items[index];
                 return Container(
                   margin:
@@ -86,21 +86,21 @@ class _HomePaginationPageState extends State<HomePaginationPage> {
                   child: Column(
                     children: [
                       Text(
-                        "ID: ${homePaginationItem.id}",
+                        "ID: ${homePaginationItemEntity.id}",
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
                       Text(
-                        "Title: ${homePaginationItem.title}",
+                        "Title: ${homePaginationItemEntity.title}",
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,
                         ),
                       ),
                       Text(
-                        "Description: ${homePaginationItem.description}",
+                        "Description: ${homePaginationItemEntity.description}",
                         style: const TextStyle(
                           fontSize: 16,
                           color: Colors.white,

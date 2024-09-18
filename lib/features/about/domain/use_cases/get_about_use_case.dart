@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/error/failures.dart';
 import '../entities/about.dart';
 import '../repositories/about_repository.dart';
 
@@ -12,6 +13,6 @@ class GetAboutUseCase {
     required this.aboutRepository,
   });
 
-  Future<Either<Exception, About>> call() async =>
+  Future<Either<Failure, About>> call() async =>
       await aboutRepository.getAbout();
 }

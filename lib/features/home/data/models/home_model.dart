@@ -1,25 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../domain/entities/home.dart';
-import 'home_item_model.dart';
+import 'home_data_model.dart';
 
 part 'home_model.g.dart';
 
-@JsonSerializable()
-class HomeModel extends Home {
+@JsonSerializable(createToJson: false)
+class HomeModel {
   @JsonKey(name: 'data')
-  final List<HomeItemModel> homeItemsModel;
+  final List<HomeDataModel> homeDataItems;
 
   const HomeModel({
-    required super.status,
-    required super.message,
-    required this.homeItemsModel,
-  }) : super(
-          homeItems: homeItemsModel,
-        );
+    required this.homeDataItems,
+  });
+
   factory HomeModel.fromJson(Map<String, dynamic> json) =>
       _$HomeModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$HomeModelToJson(this);
-
 }

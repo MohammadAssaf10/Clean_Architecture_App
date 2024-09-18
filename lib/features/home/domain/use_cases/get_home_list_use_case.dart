@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../entities/home.dart';
+import '../../../../core/error/failures.dart';
+import '../entities/home_entity.dart';
 import '../repositories/home_repository.dart';
 
 @lazySingleton
@@ -12,6 +13,6 @@ class GetHomeListUseCase {
     required this.homeRepository,
   });
 
-  Future<Either<Exception, Home>> call() async =>
+  Future<Either<Failure, List<HomeEntity>>> call() async =>
       await homeRepository.getHomeList();
 }

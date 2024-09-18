@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../error/exceptions.dart';
 import '../models/base_model.dart';
 import 'base_remote_data_source.dart';
 
@@ -31,12 +32,12 @@ class BaseRemoteDataSourceImpl implements BaseRemoteDataSource {
     if (response.statusCode == 200 && response.data != null) {
       final BaseModel baseModel = BaseModel.fromJson(response.data!);
       if (baseModel.status == 200) {
-        return response.data!;
+        return response.data!['data'];
       } else {
-        throw Exception('Parse Error');
+        throw ServerException(error: baseModel.message);
       }
     } else {
-      throw Exception('Error');
+      throw const ServerException(error:"Something went wrong");
     }
   }
 }

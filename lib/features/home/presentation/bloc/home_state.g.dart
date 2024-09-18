@@ -8,9 +8,9 @@ part of 'home_state.dart';
 
 class _$HomeState extends HomeState {
   @override
-  final BuiltList<HomeItem> homeItems;
+  final BuiltList<HomeEntity> homeDataItems;
   @override
-  final PaginationStateData<HomePaginationItem> homePagination;
+  final PaginationStateData<HomePaginationItemEntity> homePagination;
   @override
   final bool isLoading;
   @override
@@ -24,14 +24,15 @@ class _$HomeState extends HomeState {
       (new HomeStateBuilder()..update(updates))._build();
 
   _$HomeState._(
-      {required this.homeItems,
+      {required this.homeDataItems,
       required this.homePagination,
       required this.isLoading,
       required this.isSuccess,
       required this.isError,
       required this.message})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(homeItems, r'HomeState', 'homeItems');
+    BuiltValueNullFieldError.checkNotNull(
+        homeDataItems, r'HomeState', 'homeDataItems');
     BuiltValueNullFieldError.checkNotNull(
         homePagination, r'HomeState', 'homePagination');
     BuiltValueNullFieldError.checkNotNull(isLoading, r'HomeState', 'isLoading');
@@ -51,7 +52,7 @@ class _$HomeState extends HomeState {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is HomeState &&
-        homeItems == other.homeItems &&
+        homeDataItems == other.homeDataItems &&
         homePagination == other.homePagination &&
         isLoading == other.isLoading &&
         isSuccess == other.isSuccess &&
@@ -62,7 +63,7 @@ class _$HomeState extends HomeState {
   @override
   int get hashCode {
     var _$hash = 0;
-    _$hash = $jc(_$hash, homeItems.hashCode);
+    _$hash = $jc(_$hash, homeDataItems.hashCode);
     _$hash = $jc(_$hash, homePagination.hashCode);
     _$hash = $jc(_$hash, isLoading.hashCode);
     _$hash = $jc(_$hash, isSuccess.hashCode);
@@ -75,7 +76,7 @@ class _$HomeState extends HomeState {
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'HomeState')
-          ..add('homeItems', homeItems)
+          ..add('homeDataItems', homeDataItems)
           ..add('homePagination', homePagination)
           ..add('isLoading', isLoading)
           ..add('isSuccess', isSuccess)
@@ -88,18 +89,19 @@ class _$HomeState extends HomeState {
 class HomeStateBuilder implements Builder<HomeState, HomeStateBuilder> {
   _$HomeState? _$v;
 
-  ListBuilder<HomeItem>? _homeItems;
-  ListBuilder<HomeItem> get homeItems =>
-      _$this._homeItems ??= new ListBuilder<HomeItem>();
-  set homeItems(ListBuilder<HomeItem>? homeItems) =>
-      _$this._homeItems = homeItems;
+  ListBuilder<HomeEntity>? _homeDataItems;
+  ListBuilder<HomeEntity> get homeDataItems =>
+      _$this._homeDataItems ??= new ListBuilder<HomeEntity>();
+  set homeDataItems(ListBuilder<HomeEntity>? homeDataItems) =>
+      _$this._homeDataItems = homeDataItems;
 
-  PaginationStateDataBuilder<HomePaginationItem>? _homePagination;
-  PaginationStateDataBuilder<HomePaginationItem> get homePagination =>
+  PaginationStateDataBuilder<HomePaginationItemEntity>? _homePagination;
+  PaginationStateDataBuilder<HomePaginationItemEntity> get homePagination =>
       _$this._homePagination ??=
-          new PaginationStateDataBuilder<HomePaginationItem>();
+          new PaginationStateDataBuilder<HomePaginationItemEntity>();
   set homePagination(
-          PaginationStateDataBuilder<HomePaginationItem>? homePagination) =>
+          PaginationStateDataBuilder<HomePaginationItemEntity>?
+              homePagination) =>
       _$this._homePagination = homePagination;
 
   bool? _isLoading;
@@ -123,7 +125,7 @@ class HomeStateBuilder implements Builder<HomeState, HomeStateBuilder> {
   HomeStateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _homeItems = $v.homeItems.toBuilder();
+      _homeDataItems = $v.homeDataItems.toBuilder();
       _homePagination = $v.homePagination.toBuilder();
       _isLoading = $v.isLoading;
       _isSuccess = $v.isSuccess;
@@ -153,7 +155,7 @@ class HomeStateBuilder implements Builder<HomeState, HomeStateBuilder> {
     try {
       _$result = _$v ??
           new _$HomeState._(
-              homeItems: homeItems.build(),
+              homeDataItems: homeDataItems.build(),
               homePagination: homePagination.build(),
               isLoading: BuiltValueNullFieldError.checkNotNull(
                   isLoading, r'HomeState', 'isLoading'),
@@ -166,8 +168,8 @@ class HomeStateBuilder implements Builder<HomeState, HomeStateBuilder> {
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'homeItems';
-        homeItems.build();
+        _$failedField = 'homeDataItems';
+        homeDataItems.build();
         _$failedField = 'homePagination';
         homePagination.build();
       } catch (e) {

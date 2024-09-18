@@ -8,7 +8,7 @@ part of 'about_state.dart';
 
 class _$AboutState extends AboutState {
   @override
-  final SubAbout? about;
+  final About? about;
   @override
   final bool isLoading;
   @override
@@ -81,9 +81,9 @@ class _$AboutState extends AboutState {
 class AboutStateBuilder implements Builder<AboutState, AboutStateBuilder> {
   _$AboutState? _$v;
 
-  SubAbout? _about;
-  SubAbout? get about => _$this._about;
-  set about(SubAbout? about) => _$this._about = about;
+  About? _about;
+  About? get about => _$this._about;
+  set about(About? about) => _$this._about = about;
 
   bool? _isLoading;
   bool? get isLoading => _$this._isLoading;

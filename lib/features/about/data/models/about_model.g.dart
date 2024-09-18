@@ -7,15 +7,6 @@ part of 'about_model.dart';
 // **************************************************************************
 
 AboutModel _$AboutModelFromJson(Map<String, dynamic> json) => AboutModel(
-      status: (json['status'] as num?)?.toInt(),
-      message: json['message'] as String?,
-      subAboutModel:
-          SubAboutModel.fromJson(json['data'] as Map<String, dynamic>),
+      id: (json['id'] as num).toInt(),
+      text: json['text'] as String,
     );
-
-Map<String, dynamic> _$AboutModelToJson(AboutModel instance) =>
-    <String, dynamic>{
-      'status': instance.status,
-      'message': instance.message,
-      'data': instance.subAboutModel,
-    };

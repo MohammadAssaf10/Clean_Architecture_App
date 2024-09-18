@@ -3,17 +3,17 @@ import 'package:built_value/built_value.dart';
 
 import '../../../../core/base_bloc_state.dart';
 import '../../../../core/entities/pagination_state_data.dart';
-import '../../domain/entities/home_item.dart';
-import '../../domain/entities/home_pagination/home_pagination_item.dart';
+import '../../domain/entities/home_entity.dart';
+import '../../domain/entities/home_pagination_item_entity.dart';
 
 part 'home_state.g.dart';
 
 abstract class HomeState
     with BaseState
     implements Built<HomeState, HomeStateBuilder> {
-  BuiltList<HomeItem> get homeItems;
+  BuiltList<HomeEntity> get homeDataItems;
 
-  PaginationStateData<HomePaginationItem> get homePagination;
+  PaginationStateData<HomePaginationItemEntity> get homePagination;
 
   HomeState._();
 
@@ -26,9 +26,9 @@ abstract class HomeState
         ..isSuccess = false
         ..isError = false
         ..message = ''
-        ..homeItems.replace([])
+        ..homeDataItems.replace([])
         ..homePagination
-            .replace(PaginationStateData<HomePaginationItem>.initial()),
+            .replace(PaginationStateData<HomePaginationItemEntity>.initial()),
     );
   }
 }

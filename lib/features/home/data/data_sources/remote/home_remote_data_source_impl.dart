@@ -28,6 +28,6 @@ class HomeRemoteDataSourceImpl extends BaseRemoteDataSourceImpl
         await rootBundle.loadString(Assets.jsonHomePagination);
     final Map<String, dynamic> result = jsonDecode(jsonString);
     await Future.delayed(const Duration(seconds: 2));
-    return HomePaginationModel.fromJson(result);
+    return HomePaginationModel.fromJson(result['data']);
   }
 }

@@ -42,7 +42,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 (b) => b
                   ..isLoading = false
                   ..isError = true
-                  ..message = failure.toString()
+                  ..message = failure.error
                   ..isSuccess = false,
               ),
             );
@@ -55,7 +55,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                   ..isError = false
                   ..message = ''
                   ..isSuccess = true
-                  ..homeItems.addAll(data.homeItems),
+                  ..homeDataItems.addAll(data),
               ),
             );
           },
@@ -93,7 +93,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                 (b) => b
                   ..isLoading = false
                   ..isError = true
-                  ..message = failure.toString()
+                  ..message = failure.error
                   ..isSuccess = false
                   ..homePagination.isLoading = false,
               ),
@@ -110,9 +110,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
                   ..isSuccess = true
                   ..homePagination
                       .items
-                      .addAll(data.subHomePagination.homePaginationItems)
+                      .addAll(data.homePaginationItems)
                   ..homePagination.isFinished = b.homePagination.currentPage! >=
-                      data.subHomePagination.totalPages
+                      data.totalPages
                   ..homePagination.currentPage =
                       b.homePagination.currentPage! + 1,
               ),

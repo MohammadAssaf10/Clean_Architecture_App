@@ -1,22 +1,17 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../entities/base_entity.dart';
-
 part 'base_model.g.dart';
 
 @JsonSerializable(createToJson: false)
-class BaseModel extends BaseEntity {
+class BaseModel {
+  final int status;
+  final String message;
+
   const BaseModel({
-    required super.status,
-    required super.message,
+    required this.status,
+    required this.message,
   });
 
   factory BaseModel.fromJson(Map<String, dynamic> json) =>
       _$BaseModelFromJson(json);
-
-  @override
-  List<Object?> get props => [
-        status,
-        message,
-      ];
 }

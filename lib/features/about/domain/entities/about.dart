@@ -1,19 +1,17 @@
-import '../../../../core/entities/base_entity.dart';
-import 'sub_about.dart';
+import 'package:equatable/equatable.dart';
 
-class About extends BaseEntity {
-  final SubAbout subAbout;
+class About extends Equatable {
+  final int id;
+  final String text;
 
   const About({
-    required super.status,
-    required super.message,
-    required this.subAbout,
+    required this.id,
+    required this.text,
   });
 
   @override
   List<Object?> get props => [
-        status,
-        message,
-        subAbout,
-      ];
+    id,
+    text,
+  ];
 }

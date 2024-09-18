@@ -1,9 +1,12 @@
+import 'package:clean_architecture_app/core/error/exceptions.dart';
 import 'package:clean_architecture_app/features/about/domain/entities/about.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/error/failures.dart';
 import '../../domain/repositories/about_repository.dart';
 import '../data_sources/remote/about_remote_data_source.dart';
+import '../models/about_model.dart';
 
 @LazySingleton(as: AboutRepository)
 class AboutRepositoryImpl implements AboutRepository {
@@ -14,12 +17,15 @@ class AboutRepositoryImpl implements AboutRepository {
   });
 
   @override
-  Future<Either<Exception, About>> getAbout() async {
+  Future<Either<Failure, About>> getAbout() async {
     try {
-      final About result = await aboutRemoteDataSource.getAbout();
-      return Right(result);
+      final AboutModel result = await aboutRemoteDataSource.getAbout();
+      final About finalResult = result.toDomain();
+      return Right(finalResult);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(error: e.exceptionMessage));
     } catch (e) {
-      return Left(Exception(e));
+      return const Left(ServerFailure());
     }
   }
 }

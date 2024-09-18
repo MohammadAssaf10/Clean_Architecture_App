@@ -1,11 +1,13 @@
-import 'package:json_annotation/json_annotation.dart';
+abstract class BasePaginationModel {
+  final int totalElements;
+  final int totalPages;
+  final int size;
+  final int numberOfElements;
 
-import '../entities/base_pagination_entity.dart';
-
-@JsonSerializable(createFactory: false, createToJson: false)
-abstract class BasePaginationModel extends BasePaginationEntity {
   const BasePaginationModel({
-    required super.totalElements,
-    required super.totalPages,
+    required this.totalElements,
+    required this.totalPages,
+    required this.size,
+    required this.numberOfElements,
   });
 }

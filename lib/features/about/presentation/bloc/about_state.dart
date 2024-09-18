@@ -1,14 +1,14 @@
 import 'package:built_value/built_value.dart';
 
 import '../../../../core/base_bloc_state.dart';
-import '../../domain/entities/sub_about.dart';
+import '../../domain/entities/about.dart';
 
 part 'about_state.g.dart';
 
 abstract class AboutState
     with BaseState
     implements Built<AboutState, AboutStateBuilder> {
-  SubAbout? get about;
+  About? get about;
 
   AboutState._();
 

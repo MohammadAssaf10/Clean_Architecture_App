@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 
-class HomeItem extends Equatable {
+class HomePaginationItemEntity extends Equatable {
   final int id;
   final String title;
   final String description;
 
-  const HomeItem({
+  const HomePaginationItemEntity({
     required this.id,
     required this.title,
     required this.description,

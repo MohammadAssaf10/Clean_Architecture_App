@@ -1,19 +1,29 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../../../domain/entities/home_pagination/home_pagination_item.dart';
+import '../../../domain/entities/home_pagination_item_entity.dart';
 
 part 'home_pagination_item_model.g.dart';
 
-@JsonSerializable()
-class HomePaginationItemModel extends HomePaginationItem {
+@JsonSerializable(createToJson: false)
+class HomePaginationItemModel {
+  final int id;
+  final String title;
+  final String description;
+
   const HomePaginationItemModel({
-    required super.id,
-    required super.title,
-    required super.description,
+    required this.id,
+    required this.title,
+    required this.description,
   });
 
   factory HomePaginationItemModel.fromJson(Map<String, dynamic> json) =>
       _$HomePaginationItemModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$HomePaginationItemModelToJson(this);
+  HomePaginationItemEntity toDomain() {
+    return HomePaginationItemEntity(
+      id: id,
+      title: title,
+      description: description,
+    );
+  }
 }

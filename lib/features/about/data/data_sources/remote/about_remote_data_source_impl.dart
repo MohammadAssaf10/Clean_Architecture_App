@@ -22,6 +22,6 @@ class AboutRemoteDataSourceImpl extends BaseRemoteDataSourceImpl
     final String jsonString = await rootBundle.loadString(Assets.jsonAbout);
     final Map<String, dynamic> result = jsonDecode(jsonString);
     await Future.delayed(const Duration(seconds: 2));
-    return AboutModel.fromJson(result);
+    return AboutModel.fromJson(result['data']);
   }
 }
